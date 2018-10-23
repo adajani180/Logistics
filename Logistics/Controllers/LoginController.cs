@@ -20,29 +20,29 @@ namespace Logistics.Controllers
         #endregion
 
         // GET: Login
-        public ActionResult Index()
-        {
-            return View();
-        }
+    //    public ActionResult Index()
+    //    {
+    //        return View();
+    //    }
 
-        [HttpPost]
-        public ActionResult Index(SystemUser userLogin)
-        {
-            SystemUser user = this.accessRepo
-                .Find(u => u.UserName.Equals(userLogin.UserName) && u.PasswordHash.Equals(userLogin.PasswordHash))
-                .SingleOrDefault();
-            if (user != null)
-            {
-                //FormsAuthentication.SetAuthCookie(user.UserName, false);
-                //Session.Add(Enum.GetName(typeof(SessionEnum), SessionEnum.UserInSession), user);
-                SessionHelper.SatisUser = user;
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                ModelState.AddModelError("Error", "Login data is incorrect!");                
-                return View(user);
-            }
-        }
+    //    [HttpPost]
+    //    public ActionResult Index(SystemUser userLogin)
+    //    {
+    //        SystemUser user = this.accessRepo
+    //            .Find(u => u.UserName.Equals(userLogin.UserName) && u.PasswordHash.Equals(userLogin.PasswordHash))
+    //            .SingleOrDefault();
+    //        if (user != null)
+    //        {
+    //            //FormsAuthentication.SetAuthCookie(user.UserName, false);
+    //            //Session.Add(Enum.GetName(typeof(SessionEnum), SessionEnum.UserInSession), user);
+    //            SessionHelper.SatisUser = user;
+    //            return RedirectToAction("Index", "Home");
+    //        }
+    //        else
+    //        {
+    //            ModelState.AddModelError("Error", "Login data is incorrect!");                
+    //            return View(user);
+    //        }
+    //    }
     }
 }

@@ -20,7 +20,7 @@ namespace Logistics.Controllers
             }
             catch (SessionExpiredException exc)
             {
-                filterContext.Result = RedirectToAction("Index", "Login");
+                filterContext.Result = RedirectToAction("Login", "Account");
             }
         }
 

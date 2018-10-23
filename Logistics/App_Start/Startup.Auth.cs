@@ -5,8 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 using Logistics.Models;
+using Logistics.App_Start;
 
-namespace Logistics.App_Start
+namespace Logistics
 {
     public partial class Startup
     {
