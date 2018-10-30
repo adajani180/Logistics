@@ -1,4 +1,5 @@
 ﻿using Logistics.Helpers;
+using System;
 using System.Web.Mvc;
 
 namespace Logistics.Controllers
@@ -11,23 +12,27 @@ namespace Logistics.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            return RedirectToAction("Login", "Account");   
         }
 
-        //protected override void OnException(ExceptionContext filterContext)
-        //{
-        //    Exception exception = filterContext.Exception;
-        //    //Logging the Exception
-        //    filterContext.ExceptionHandled = true;
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            Exception exception = filterContext.Exception;
+            //Logging the Exception
+            filterContext.ExceptionHandled = true;
 
 
-        //    var Result = this.View("Error", new HandleErrorInfo(exception,
-        //        filterContext.RouteData.Values["controller"].ToString(),
-        //        filterContext.RouteData.Values["action"].ToString()));
+            var Result = this.View("Error", new HandleErrorInfo(exception,
+                filterContext.RouteData.Values["controller"].ToString(),
+                filterContext.RouteData.Values["action"].ToString()));
 
-        //    filterContext.Result = Result;
+            filterContext.Result = Result;
 
-        //}
+        }
 
         //public ActionResult About()
         //{

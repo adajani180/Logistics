@@ -14,20 +14,22 @@ namespace Logistics.Controllers
             //{
             //    AuthenticateUser(filterContext.ActionDescriptor.ControllerDescriptor.ControllerName, filterContext.ActionDescriptor.ActionName);
             //}
-            try
-            {
-                AuthenticateUser();
-            }
-            catch (SessionExpiredException exc)
-            {
-                filterContext.Result = RedirectToAction("Login", "Account");
-            }
+
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    RedirectToAction("Index", "Home");
+            //}
+            //else
+            //{
+            //    RedirectToAction("Login", "Account");
+            //}
+
         }
 
-        protected void AuthenticateUser()
-        {
-            if (SessionHelper.SatisUser == null)
-                throw new SessionExpiredException();
-        }
+        //protected void AuthenticateUser()
+        //{
+        //    if (SessionHelper.SatisUser == null)
+        //        throw new SessionExpiredException();
+        //}
     }
 }

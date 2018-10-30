@@ -1,5 +1,4 @@
-﻿
-@using Logistics.Helpers
+﻿@using Logistics.Helpers
 
 <!DOCTYPE html>
 <html>
@@ -19,24 +18,33 @@
     }
 
 </head>
-@Html.Raw(SessionHelper.SatisUser != null ? "<body>" : "<body class='blank'>")
+
+<body>
+
     <!-- Wrapper-->
+
     <div class="wrapper">
 
-        @*@if (Request.IsAuthenticated)*@
-        @if (SessionHelper.SatisUser != null)
-        {            
+        @if (User.Identity.IsAuthenticated)
+        {
             Html.RenderPartial("~/Views/Shared/Luna/_Header.cshtml");
             Html.RenderPartial("~/Views/Shared/Luna/_SideBar.cshtml");
         }
-
+        
         <!-- Main content-->
         <section class="content">
-            @Html.Raw(SessionHelper.SatisUser != null ? "<div class='container-fluid'>" : "<div class='container-center animated slideInDown'>")
+
+            @Html.Raw(User.Identity.IsAuthenticated ? "<div class='container-fluid'>" : "<div class='container-center animated slideInDown'>")
+
                 @RenderBody()
+
             </div>
+
             @{Html.RenderPartial("~/Views/Shared/Luna/_Footer.cshtml");}
-        </section>        
+
+         </section>
+
+
 
     </div>
     <!-- End wrapper-->
@@ -55,5 +63,7 @@
     {
         @RenderSection("CustomJs", required: false)
     }
+    </div>
+
 </body>
 </html>
