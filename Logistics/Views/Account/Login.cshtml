@@ -40,14 +40,16 @@
                 <span class="help-block small">Your strong password</span>
             </div>
             <div>
-                <button id="btn-login" class="btn btn-accent">Login</button>
+                <button id="btn-login" class="btn btn-accent mb-1em">Login</button>
             </div>
-            @* Enable this once you have account confirmation enabled for password reset functionality
-                <p>
-                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                </p>*@
+            //Enable this once you have account confirmation enabled for password reset functionality
+            @*<p>
+                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+            </p>*@
 
-            <p>@Html.ActionLink("Need to register?", "Register")</p>
+            <p>
+                @Html.ActionLink("Need to register?", "Register")
+            </p>
         }
 
 
