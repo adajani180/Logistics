@@ -8,6 +8,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Logistics.Models;
 using Logistics.App_Start;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 namespace Logistics.Controllers
 {
@@ -65,13 +67,16 @@ namespace Logistics.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+            var allUsers = UserManager.Users.ToList();
+
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                AllUsers = allUsers,
             };
             return View(model);
         }
@@ -386,5 +391,6 @@ namespace Logistics.Controllers
         }
 
         #endregion
+
     }
 }

@@ -23,6 +23,30 @@
             }
             ]
         </dd>
-           
     </dl>
+</div>
+<hr />
+<div>
+    <h4>Change User Roles</h4>
+    
+    <table class="table">
+        <tr>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Edit</th>
+        </tr>
+        @foreach (var user in Model.AllUsers)
+        {
+            <tr>
+                <td>
+                    @user.UserName
+                </td>
+                <td>
+                    @user.Roles
+                </td>
+                <td><button class="btn btn-sm btn-default">Change Role</button></td>
+            </tr>
+        }
+
+    </table>
 </div>
