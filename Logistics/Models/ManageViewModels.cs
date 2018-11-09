@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Microsoft.AspNet.Identity;
@@ -14,7 +15,7 @@ namespace Logistics.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
-        public IEnumerable<ApplicationUser> AllUsers { get; internal set; }
+        //public IEnumerable<ApplicationUser> AllUsers { get; internal set; }
     }
 
     public class ManageLoginsViewModel
@@ -85,5 +86,14 @@ namespace Logistics.Models
     {
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
+    }
+
+    // Manage users and roles
+    public class ManageUsersViewModel
+    {
+        public string UserId { get; set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
+        public string Role { get; set; }
     }
 }

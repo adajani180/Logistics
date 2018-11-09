@@ -67,7 +67,7 @@ namespace Logistics.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
-            var allUsers = UserManager.Users.ToList();
+            //var allUsers = UserManager.Users.ToList();
 
             var model = new IndexViewModel
             {
@@ -76,7 +76,7 @@ namespace Logistics.Controllers
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
-                AllUsers = allUsers,
+                //AllUsers = allUsers,
             };
             return View(model);
         }
@@ -338,6 +338,31 @@ namespace Logistics.Controllers
 
             base.Dispose(disposing);
         }
+
+        // GET: /Manage/ManageUsers
+        public ActionResult ManageUsers()
+        {
+            var context = new ApplicationDbContext();
+
+            var usersWithRoles = (from user in context.Users
+                                  select new
+                                  {
+                                      UserId = user.Id,
+                                      Username = user.UserName,
+                                      Email = user.Email,
+                                      RoleNames = (from userRole in user.Roles
+                                                   join role in context.Roles on userRole.RoleId
+                                                   equals role.Id
+                                                   select role.Name).ToList()
+                                  }).ToList().Select(p => new ManageUsersViewModel
+                                  {
+                                      Email = p.Email,
+                                      Role = string.Join(",", p.RoleNames)
+                                  });
+
+            return View(usersWithRoles);
+        }
+
 
         #region Helpers
         // Used for XSRF protection when adding external logins
