@@ -1,8 +1,7 @@
-﻿@model IEnumerable<Logistics.Models.ManageUsersViewModel> 
+﻿@model IEnumerable<Logistics.Models.ManageUsersViewModel>
 @{
     ViewBag.Title = "Manage Users";
 }
-
 <h2>@ViewBag.Title</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
@@ -31,12 +30,10 @@
                     @user.Role
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new {  })
+                    @Html.ActionLink("Edit", "EditRole", "Manage", new { id= user.Email + "/" }, null)
                 </td>
             </tr>
         }
 
     </table>
-
-
 </div>

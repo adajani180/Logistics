@@ -13,6 +13,7 @@ namespace Logistics
         {
             ConfigureAuth(app);
             CreateRolesandUsers();
+            //AddToAdmin();
         }
 
         // In this method we will create default User roles and Admin user for login   
@@ -51,6 +52,28 @@ namespace Logistics
                 roleManager.Create(role);
             }
         }
+
+        //private void AddToAdmin()
+        //{
+        //    ApplicationDbContext context = new ApplicationDbContext();
+
+        //    var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+        //    string userName = "rickywhite@outlook.com";
+        //    string roleName = "Admin";
+
+        //    try
+        //    {
+        //        var user = UserManager.FindByName(userName);
+        //        UserManager.AddToRole(user.Id, roleName);
+        //        context.SaveChanges();
+        //    }
+        //    catch
+        //    {
+        //        throw;
+        //    }
+            
+        //}
+    
     }
 
     

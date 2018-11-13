@@ -340,6 +340,7 @@ namespace Logistics.Controllers
         }
 
         // GET: /Manage/ManageUsers
+
         public ActionResult ManageUsers()
         {
             var context = new ApplicationDbContext();
@@ -363,6 +364,38 @@ namespace Logistics.Controllers
             return View(usersWithRoles);
         }
 
+        // GET: /Manage/EditRole/<user>
+        [Authorize]
+        public ActionResult EditRole(string id)
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+            var user = UserManager.FindByEmail(id);
+            var rolesForUser = user.Roles.ToList();
+            var roleid = rolesForUser[0].RoleId;
+            var role = roleManager.FindById(roleid);
+            string userRole = role.Name;
+
+            List<SelectListItem> allRolesList = new List<SelectListItem>();
+            foreach (var item in context.Roles)
+            {
+                allRolesList.Add(new SelectListItem()
+                {
+                    Text = item.Name,
+                    Value = item.Id
+                });
+            }
+
+            var model = new EditUserRole
+            {
+                Email = user.Email,
+                UserRole = userRole,
+                RoleList = allRolesList
+            };
+
+            return View(model);
+        }
 
         #region Helpers
         // Used for XSRF protection when adding external logins
@@ -418,4 +451,5 @@ namespace Logistics.Controllers
         #endregion
 
     }
+
 }

@@ -1478,6 +1478,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Manage\ManageUsers.cshtml" />
+    <Content Include="Views\Manage\EditRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Themes\Luna\vendor\moment\src\lib\create\" />
@@ -1560,7 +1561,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51638</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51638/</IISUrl>
+          <IISUrl>http://localhost:51000/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

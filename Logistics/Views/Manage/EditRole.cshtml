@@ -1,0 +1,19 @@
+﻿@model Logistics.Models.EditUserRole
+@{
+    ViewBag.Title = "Edit Users Role";
+}
+<h2>@ViewBag.Title</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <hr />
+    <b>User Name: @Model.Email</b>
+    <br />
+    <b>User Role: @Model.UserRole</b>
+    <br />
+    <hr />
+    <h4>Change Role</h4>
+    <p>Users Role: @Html.DropDownListFor(m => m.RoleList, ViewBag.allRolesList as SelectList, "-- Change Role --")</p>
+    <button class="btn btn-success">Save</button>
+    
+</div>

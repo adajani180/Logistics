@@ -96,4 +96,14 @@ namespace Logistics.Models
         public string Email { get; set; }
         public string Role { get; set; }
     }
+
+    public class EditUserRole
+    {
+        public string Email { get; set; }
+        //public IEnumerable<IdentityRole> Role { get; set; }
+        public List<System.Web.Mvc.SelectListItem> RoleList { get; set; }
+        public string UserRole { get; set; }
+
+    }
+
 }
