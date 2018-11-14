@@ -12,8 +12,17 @@
     <b>User Role: @Model.UserRole</b>
     <br />
     <hr />
-    <h4>Change Role</h4>
-    <p>Users Role: @Html.DropDownListFor(m => m.RoleList, ViewBag.allRolesList as SelectList, "-- Change Role --")</p>
-    <button class="btn btn-success">Save</button>
-    
+
+    @using (Html.BeginForm("ChangeRole", "Manage", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <h4>Change Role</h4>
+        <p>Users Role: @Html.DropDownListFor(m => m.RoleList, ViewBag.allRolesList as SelectList, "-- Change Role --")</p>
+        
+        <input type="hidden" name="userid" value="@Model.Email" />
+
+        <button type="submit" class="btn btn-success">Save</button>
+    }
+
 </div>

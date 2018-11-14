@@ -397,6 +397,43 @@ namespace Logistics.Controllers
             return View(model);
         }
 
+        //POST: /Manage/EditRole/<user>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeRole(FormCollection form)
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+            
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+            var user = UserManager.FindByEmail(form["userid"]);
+            var userRole = user.Roles.FirstOrDefault().RoleId;
+            var findRole = roleManager.FindById(userRole);
+            string oldRole = findRole.Name;
+            var newRole = form["RoleList"].ToString();
+            string role = roleManager.FindById(newRole).Name;
+
+            if (oldRole != role)
+            {
+                UserManager.RemoveFromRole(user.Id, oldRole);
+                UserManager.AddToRole(user.Id, role);
+            }
+
+            var updatedUser = new ManageUsersViewModel
+            {
+                UserId = user.Id,
+                Username = user.UserName,
+                Email = user.Email,
+                Role = user.Roles.ToList()[0].RoleId
+            };
+
+            return RedirectToAction("ManageUsers", "Manage");
+        }
+
+
+
+
+
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";

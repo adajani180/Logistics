@@ -29,7 +29,7 @@ namespace Logistics
             if (!roleManager.RoleExists("Admin"))
             {
                 // Create Admin role   
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                var role = new IdentityRole();
                 role.Name = "Admin";
                 roleManager.Create(role);
 
@@ -38,7 +38,7 @@ namespace Logistics
             // Creating Manager role    
             if (!roleManager.RoleExists("Manager"))
             {
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                var role = new IdentityRole();
                 role.Name = "Manager";
                 roleManager.Create(role);
 
@@ -47,7 +47,7 @@ namespace Logistics
             // Creating Employee role    
             if (!roleManager.RoleExists("Employee"))
             {
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                var role = new IdentityRole();
                 role.Name = "Employee";
                 roleManager.Create(role);
             }
@@ -71,9 +71,8 @@ namespace Logistics
         //    {
         //        throw;
         //    }
-            
         //}
-    
+
     }
 
     

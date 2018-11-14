@@ -15,7 +15,6 @@ namespace Logistics.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
-        //public IEnumerable<ApplicationUser> AllUsers { get; internal set; }
     }
 
     public class ManageLoginsViewModel
@@ -100,10 +99,7 @@ namespace Logistics.Models
     public class EditUserRole
     {
         public string Email { get; set; }
-        //public IEnumerable<IdentityRole> Role { get; set; }
         public List<System.Web.Mvc.SelectListItem> RoleList { get; set; }
         public string UserRole { get; set; }
-
     }
-
 }
