@@ -339,8 +339,9 @@ namespace Logistics.Controllers
             base.Dispose(disposing);
         }
 
-        // GET: /Manage/ManageUsers
 
+        // GET: /Manage/ManageUsers
+        [Authorize(Roles = "Admin")]
         public ActionResult ManageUsers()
         {
             var context = new ApplicationDbContext();
@@ -365,7 +366,7 @@ namespace Logistics.Controllers
         }
 
         // GET: /Manage/EditRole/<user>
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult EditRole(string id)
         {
             ApplicationDbContext context = new ApplicationDbContext();
@@ -397,7 +398,8 @@ namespace Logistics.Controllers
             return View(model);
         }
 
-        //POST: /Manage/EditRole/<user>
+        //POST: /Manage/EditRole/
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ChangeRole(FormCollection form)
@@ -430,10 +432,7 @@ namespace Logistics.Controllers
             return RedirectToAction("ManageUsers", "Manage");
         }
 
-
-
-
-
+                     
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
