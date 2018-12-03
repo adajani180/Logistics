@@ -3,9 +3,9 @@
 
 @{
     string userName = string.Empty;
-    if (SessionHelper.SatisUser != null)
+    if (User.Identity.IsAuthenticated)
     {
-        userName = SessionHelper.SatisUser.UserName;
+        userName = User.Identity.Name;
     }
 }
 
@@ -33,14 +33,16 @@
                     <i class="stroke-hamburgermenu"></i>
                 </a>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="profil-link">
-                    <a href="#">
-                        <span class="profile-address">@userName</span>
-                        <i class="fa fa-fw fa-user fa-2x"></i>
-                    </a>
-                </li>
-            </ul>
+            @*<ul class="nav navbar-nav navbar-right">
+            <li class="profil-link">
+                <a href="#">
+                    <span class="profile-address">@userName</span>
+
+                    <i class="fa fa-fw fa-user fa-2x"></i>
+                </a>
+            </li>
+        </ul>*@
+            @Html.Partial("_LoginPartial")
         </div>
 
     </div>

@@ -32,22 +32,29 @@
                 </ul>
             </li>
 
-            <li class="nav-category">Access Control</li>
-            <li id="sb-access">
-                <a href="#access" data-toggle="collapse" aria-expanded="false" class="collapsed">
-                    System<span class="sub-nav-icon"> <i class="stroke-arrow"></i> </span>
-                </a>
-                <ul id="access" class="nav nav-second collapse" aria-expanded="false" style="height: 0px;">
-                    <li id="sb-users">@Html.ActionLink("Users", "Index", "Admin", new { Area = "" }, null)</li>
-                </ul>
-            </li>
+            @*<li class="nav-category">Access Control</li>
+        <li id="sb-access">
+            <a href="#access" data-toggle="collapse" aria-expanded="false" class="collapsed">
+                System<span class="sub-nav-icon"> <i class="stroke-arrow"></i> </span>
+            </a>
+            <ul id="access" class="nav nav-second collapse" aria-expanded="false" style="height: 0px;">
+                <li id="sb-users">@Html.ActionLink("Users", "Index", "Admin", new { Area = "" }, null)</li>
+            </ul>
+        </li>*@
+            
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-category">Admin Section</li>
+                <li id="sb-manage-users">@Html.ActionLink("Manage Users", "ManageUsers", "Manage", new { Area = "" }, null)</li>
 
-            <li class="nav-info">
-                <i class="pe pe-7s-shield text-accent"></i>
-                <div class="m-t-xs">
-                    <span class="c-white">SATIS</span> - &copy; @DateTime.Now.Year
-                </div>
-            </li>
+                <li class="nav-info">
+                    <i class="pe pe-7s-shield text-accent"></i>
+                    <div class="m-t-xs">
+                        <span class="c-white">SATIS</span> - &copy; @DateTime.Now.Year
+                    </div>
+                </li>
+            }
+
         </ul>
     </nav>
 </aside>

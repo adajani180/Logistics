@@ -16,3 +16,9 @@ textarea {
     max-width: 280px;
 }
 
+.pt-20 {
+    padding-top: 20px;
+}
+.pt-10 {
+    padding-top: 10px;
+}
