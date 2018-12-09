@@ -87,25 +87,25 @@ namespace Logistics
             }
         }
 
-        private void AddToAdmin()
-        {
-            ApplicationDbContext context = new ApplicationDbContext();
+        //private void AddToAdmin()
+        //{
+        //    ApplicationDbContext context = new ApplicationDbContext();
 
-            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            string userName = "Ahmed";
-            string roleName = "Admin";
+        //    var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+        //    string userName = "Ahmed";
+        //    string roleName = "Admin";
 
-            try
-            {
-                var user = UserManager.FindByName(userName);
-                UserManager.AddToRole(user.Id, roleName);
-                context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
+        //    try
+        //    {
+        //        var user = UserManager.FindByName(userName);
+        //        UserManager.AddToRole(user.Id, roleName);
+        //        context.SaveChanges();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw e;
+        //    }
+        //}
     }
 
     
