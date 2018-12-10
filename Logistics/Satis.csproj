@@ -197,7 +197,9 @@
     <Compile Include="Areas\Inventory\Repositories\AssetRepository.cs" />
     <Compile Include="Areas\Inventory\Repositories\BinRepository.cs" />
     <Compile Include="Areas\Inventory\Repositories\WarehouseRepository.cs" />
+    <Compile Include="Areas\Transactions\Controllers\ManageController.cs" />
     <Compile Include="Areas\Transactions\Models\TransactionsContext.cs" />
+    <Compile Include="Areas\Transactions\TransactionsAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -282,6 +284,8 @@
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Areas\Transactions\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Transactions\Views\web.config" />
+    <Content Include="Areas\Transactions\Views\Manage\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1470,7 +1474,6 @@
     <Content Include="Views\Manage\EditRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Transactions\Controllers\" />
     <Folder Include="Themes\Luna\vendor\moment\src\lib\create\" />
     <Folder Include="Themes\Luna\vendor\moment\src\lib\duration\" />
     <Folder Include="Themes\Luna\vendor\moment\src\lib\format\" />
